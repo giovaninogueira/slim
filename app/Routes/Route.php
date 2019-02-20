@@ -25,4 +25,3 @@
     $app->delete('/dev/{id}', function(Request $request, Response $response, $args) {
         return Controllers\DevController::delete($args['id']);
     });
-    $app->run();
