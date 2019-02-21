@@ -23,7 +23,7 @@
     /**
      * Arquivo de configuração e conexão
      */
-    require_once __DIR__ . '/../src/Bootstrap/settings.php';
+    require_once __DIR__ . '/../src/Bootstrap/Settings.php';
 
     /**
      * Arquivo de Rotas
