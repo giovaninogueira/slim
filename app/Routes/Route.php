@@ -2,26 +2,11 @@
 
     namespace App\Routes;
 
-    use App\Controllers;
-    use Slim\Http\Request;
-    use Slim\Http\Response;
-
-    $app->get('/dev', function(Request $request, Response $response, $args) {
-        return Controllers\DevController::select();
-    });
-
-    $app->get('/dev/{id}', function(Request $request, Response $response, $args) {
-        return Controllers\DevController::selectBy($args['id']);
-    });
-
-    $app->post('/dev', function (Request $request, Response $response) {
-        return Controllers\DevController::insert((object) $request->getParsedBody());
-    });
-
-    $app->put('/dev/{id}', function (Request $request, Response $response, $args) {
-        return Controllers\DevController::update((object) $request->getParsedBody(), $args['id']);
-    });
-
-    $app->delete('/dev/{id}', function(Request $request, Response $response, $args) {
-        return Controllers\DevController::delete($args['id']);
-    });
+    $path    = __DIR__ . '/Paths';
+    $routes = array_diff(
+        scandir($path),
+        array('.', '..')
+    );
+    foreach ($routes as $index => $route) {
+        require_once __DIR__ . '/Paths/' . $route;
+    }
